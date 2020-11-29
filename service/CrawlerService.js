@@ -1,8 +1,12 @@
-import {JSDOM} from "jsdom";
+const {JSDOM} = require("jsdom");
+
 const SITE_URL = "https://covid19.saglik.gov.tr"
 
-export default class CrawlerService {
-    getData = async function () {
+class CrawlerService {
+    constructor() {
+    }
+
+    async getData() {
         const dom = await JSDOM.fromURL(SITE_URL, {
             runScripts: "dangerously",
             includeNodeLocations: true,
@@ -15,3 +19,4 @@ export default class CrawlerService {
     }
 }
 
+module.exports = { CrawlerService }

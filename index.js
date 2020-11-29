@@ -1,14 +1,15 @@
-import CrawlerService from "./service/CrawlerService.js";
-import FileService from "./service/FileService.js";
-import TelegramService from "./service/TelegramService.js";
+const { CrawlerService } = require('./service/CrawlerService');
+const { FileService } = require('./service/FileService');
+const { TelegramService } = require('./service/TelegramService');
 
-let crawlerService = new CrawlerService()
-let fileService = new FileService()
-let telegramService = new TelegramService()
 
 async function run() {
-    const crawlData = await crawlerService.getData()
+    let fileService = new FileService();
+    let telegramService = new TelegramService();
+    let crawlerService = new CrawlerService();
+
     const savedData = await fileService.getLatest()
+    const crawlData = await crawlerService.getData()
 
     if (crawlData["tarih"] !== savedData["tarih"]) {
         console.log("New data found.")
@@ -18,4 +19,4 @@ async function run() {
         console.log("Data is identical.")
     }
 }
-run().then(() => console.log("Completed Successfully")).catch(() => console.log("An error occurred"))
+run().then(() => console.log("Completed Successfully")).catch(x => console.log(`An error occurred Err: ${x}`))

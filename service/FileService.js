@@ -1,12 +1,19 @@
-import fs from "fs";
+const fs = require('fs');
+
 const latestDataFile = "./data/latest.json"
 
-export default class FileService {
-    getLatest = async function () {
+class FileService {
+    constructor() {
+    }
+
+    async getLatest () {
         return JSON.parse(fs.readFileSync(latestDataFile));
     }
 
-    saveLatest = async function (data) {
+    async saveLatest (data) {
         return fs.writeFileSync(latestDataFile, JSON.stringify(data));
     }
+
 }
+
+module.exports = { FileService }

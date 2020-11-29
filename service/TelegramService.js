@@ -1,7 +1,10 @@
-import axios from "axios";
+const axios = require('axios');
 
-export default class TelegramService {
-    notifyChannel = function (data) {
+class TelegramService {
+    constructor() {
+    }
+
+    async notifyChannel(data) {
         let message = `\n*TARİH: ${data.tarih}*\n`
         message += "\n*BUGÜN*";
         message += `\n😷 Vaka: *${data.gunluk_vaka}*`
@@ -32,3 +35,5 @@ export default class TelegramService {
         });
     }
 }
+
+module.exports = { TelegramService }
