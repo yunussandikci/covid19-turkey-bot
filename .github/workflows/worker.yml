@@ -5,7 +5,7 @@ on:
     - cron: '*/5 * * * *'
 jobs:
   execute:
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     env:
       TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
