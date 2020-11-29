@@ -25,4 +25,4 @@ jobs:
           git config --global user.name 'Github Actions'
           git config --global user.email 'bot@github.com'
           git commit -am "Automated Update"
-          git push
+          git push || true
