@@ -24,5 +24,7 @@ jobs:
         run: |
           git config --global user.name 'Github Actions'
           git config --global user.email 'bot@github.com'
-          git commit -am "Automated Update"
-          git push || true
+          if [[ `git status --porcelain` ]]; then
+            git commit -am "Automated Update"
+            git push
+          fi
