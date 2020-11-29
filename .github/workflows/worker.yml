@@ -1,0 +1,27 @@
+name: Scheduled Worker
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+jobs:
+  execute:
+    runs-on: windows-latest
+    env:
+      TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Worker
+        run: node index.js
+      - name: Push Changes
+        run: |
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'bot@github.com'
+          git commit -am "Automated Update"
+          git push
