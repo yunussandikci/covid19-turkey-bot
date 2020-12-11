@@ -13,9 +13,9 @@ class TelegramService {
         message += `\n😇 İyileşen: *${data.gunluk_iyilesen}*`
         message += `\n🧪 Test: *${data.gunluk_test}*`
         message += "\n\n*TOPLAM*";
+        message += `\n😷 Vaka: *${data.toplam_hasta}*`
         message += `\n💀 Vefat: *${data.toplam_vefat}*`
-        message += `\n🤒 Hasta: *${data.toplam_hasta}*`
-        message += `\n🤕 Ağır Hasta: *${data.agir_hasta_sayisi}*`
+        message += `\n🤒 Ağır Hasta: *${data.agir_hasta_sayisi}*`
         message += `\n😇 İyileşen: *${data.toplam_iyilesen}*`
         message += `\n🧪 Test: *${data.toplam_test}*`
         message += "\n\n*BU HAFTA*";
